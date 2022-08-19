@@ -11,7 +11,7 @@ class BrowserHistory:
         self.curr_index += 1
         print("the new curr_index is {}".format(self.curr_index))
         self.map[self.curr_index] = page
-        for key, value in self.map.items():
+        for key, value in list(self.map.items()):
             if key > self.curr_index:
                 del self.map[key]
 
@@ -41,27 +41,21 @@ class BrowserHistory:
 
 
 browserHistory = BrowserHistory()
-
 browserHistory.go_to("NYT")
 print(browserHistory.current_page())
-
 browserHistory.go_to("google")
 print(browserHistory.current_page())
-
 browserHistory.go_to("amazon")
 print(browserHistory.current_page())
-
 browserHistory.go_to("FB")
 print(browserHistory.current_page())
-
 browserHistory.skip_backward(2)
-
+print(browserHistory.current_page())
+browserHistory.go_to("slate")
+print(browserHistory.current_page())
+browserHistory.skip_forward(1)
+print(browserHistory.current_page())
+browserHistory.skip_backward(2)
+print(browserHistory.current_page())
 print(browserHistory.current_page())
 
-browserHistory.skip_backward(3)
-
-print(browserHistory.current_page())
-
-browserHistory.skip_forward(2)
-
-print(browserHistory.current_page())
